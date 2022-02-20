@@ -1,9 +1,11 @@
+@import url("../css/footer.css");
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 body{
+    font-family: sans-serif;
     width: 100%;
     height: 100%;
     color: #fff;
@@ -23,40 +25,66 @@ body{
         background-position: 0 50%;
     }
 }
-.warrper{
-    margin-left:8%;
-    margin-right:8%;
+.header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: column;
 }
-.header h1{
-    margin-top: 5%;
-    font-size: 50px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-style: normal;
-    font-weight: bolder;
+.header .header-logo,
+.header .title{
+    width: 100%;
+    padding: 5px;
+}
+.header .header-logo img{
     text-align: center;
-    color: #082032;
-    
-}    
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    filter: brightness(110%);
+}
+.header .title h1{
+    margin: 0 5%;
+    text-align: center;
+    font-size: 2.5em;
+    color: transparent;
+    background-image: linear-gradient(-45deg, #771d2c , #1c5555);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
 
-.fill{
-    
-    width: 30%;
-    background:white ;
-    border-radius: 10px;
-    padding: 30px;
+.form{
+    padding: 30px 40px;
+}    
+.form-wrapper{
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    width: 500px;
+    max-width: 100%;
     margin-left: 35%;
     margin-top: 15%;
+}
+.fill{
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20px 40px;
     
     
 }
 .fill h1{
-    text-align: center;
+     margin: 0;
     color: #082032;
-    padding: 0 0 20px 0;
-    border-bottom: 1px solid silver; 
+    text-align: center; 
     
 }
 .fill form{
+    margin-top: 1rem;;
     padding: 0 40px;
     box-sizing: border-box;
 }
@@ -80,45 +108,69 @@ form .text_field{
     transition: .5s;
     
 }
-.text_field input{
-    width: 100%;
-    padding: 0 5px;
-    height: 40px;
-    font-size: 16px;
-    border: none;
-    background: none;
-    outline: none;
+
+.form-control{
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+    
 }
-.text_field label{
-    position: absolute;
-    top: 50%;
-    left: 5px;
+.form-control label{
+    display: inline-block;
+    margin-bottom: 5px;
+    color: #082032;
+
+}
+.form-control input{
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+   
+}
+.form-control a{
     color: #adadad;
-    transform: translateY(-50%);
-    font-size: 16px;
-    pointer-events: none;
-    transition: .5s;
     
 }
-.text_field span::before{
-    content: '';
-    top: 40px;
+
+.form-control.success input{
+    border-color: #2ecc71;
+}
+.form-control.error input{
+    border-color: #e74c3c;
+}
+.form-control i{
+    position: absolute;
+    visibility: hidden;
+    left:93%;
+    top: 35%;
+   
+}
+.form-control.success i.fa-check-circle{
+    
+    visibility: visible;
+    color: #2ecc71;
+}
+.form-control.error i.fa-exclamation-circle{
+    
+    visibility: visible;
+    color: #e74c3c;
+}
+.form-control small{
+    visibility: hidden;
+    position: relative;
+    bottom: 0;
     left: 0;
-    width: 0%;
-    height: 2px;
-    background: #2691d9;
-    transition: .5s;
+}
+.form-control.error small{
+    visibility: visible;
     
+    color: #e74c3c;
 }
-.text_field input:focus ~ label,
-.text_field input:valid ~ label{
-    top: -5px;
-    color: #2691d9;
-}
-.text_field input:focus ~ span::before,
-.text_field input:valid ~ span::before{
-    width: 100%;
-}
+
 button[type="submit"] {
     width: 100%;
     height: 50px;
@@ -137,19 +189,39 @@ button[type="submit"]:hover {
     transition: .5s;
 }
 
-
-.footer{
-    
+/*Country select*/
+#country-label{
+    margin-top: -15px;
+    pointer-events: none;
+}
+.text_field #country{
     width: 100%;
-    float: left;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    height: 10%;
-    margin: auto;
-    text-align: center;
-    background: linear-gradient(-45deg, #091118, #47131c , #162e2e, #111816 );
-    background-size:100% 100%;
-    position: relative;
-    animation: change 10s ease-in-out infinite;
+    padding: 5px 0;
+    border: none;
+    outline: none;
+}
+
+
+
+@media screen and (max-width: 700px){
+    .form-wrapper{
+        margin: 0 4%;
+    }
+    .form-wrapper .fill{
+        width: 90%;
+    }
+    .header .header-logo{
+        background-color: #d0f7f7;
+        box-shadow: 0 2px 10px 0 rgba(0,0,0,.4);
+        position: fixed;
+        top: 0;
+        z-index: 100;
+    }
+    .header .header-logo img{
+        width: 100px;
+    }
+    .fill form{
+        padding: 0 20px;
+    } 
+
 }
